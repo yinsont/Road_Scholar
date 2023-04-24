@@ -9,6 +9,7 @@
     "mapbox-gl": "^2.14.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-map-gl": "^7.0.23",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
@@ -37,4 +38,3 @@
     ]
   }
 }
-

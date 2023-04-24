@@ -17,11 +17,13 @@ code {
   flex-direction: row;
 }
 
-.map {
-  position: absolute;
+#mapdiv {
+  position: relative;
+  margin: 50px;
+  height: 30vh;
 }
 
-.map-container {
+/* .map-container {
   height: 400px;
 }
    
@@ -36,4 +38,4 @@ code {
   left: 0;
   margin: 12px;
   border-radius: 4px;
-}
+} */
