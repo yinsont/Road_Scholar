@@ -1,8 +1,10 @@
 import './App.css';
-import Map from './Map';
+// import Map from './Map';
 import GuessForm from './GuessForm';
 import { accessToken } from 'mapbox-gl';
 import { useState } from 'react'
+import Map, {Marker} from 'react-map-gl';
+
 
 function App() {
 
@@ -10,6 +12,8 @@ function App() {
   const [origin, setOrigin] = useState([-70.9, 42.35]);
   const [destination, setDestination] = useState([-72.9, 43.35]);
   accessToken = 'pk.eyJ1IjoicmFjcXVlbGdsaWNrbWFuIiwiYSI6ImNsZ3FxdGpzYzAzYXczZGx6NmtkanN2Z3YifQ.yK7-WEliO2PFq4PxgG5QFw'
+
+  console.log(origin[0])
 
   function handleStart() {
     console.log('time to start the game - go fetch the random points');
@@ -50,21 +54,15 @@ function App() {
       return Math.floor(Math.random() * (max - min) ) + min;
     };
 
-    const randomOrigin = [randomInteger(minLng, maxLng), randomInteger(minLat, maxLat)];
-    const randomDestination = [randomInteger(minLng, maxLng), randomInteger(minLat, maxLat)];
+    // check that they are on land in the us
 
-    setOrigin(randomOrigin);
-    setDestination(randomDestination);
-
-    console.log(origin, destination);
-
-
-    // check that they are in the us
-
-    // set origin and destination
-    
     // https://api.mapbox.com/geocoding/v5/mapbox.places/-73.989,40.733.json?limit=1&country=us&access_token=pk.eyJ1IjoicmFjcXVlbGdsaWNrbWFuIiwiYSI6ImNsZ3FxdGpzYzAzYXczZGx6NmtkanN2Z3YifQ.yK7-WEliO2PFq4PxgG5QFw
 
+    // set origin and destination
+    setOrigin([randomInteger(minLng, maxLng), randomInteger(minLat, maxLat)]);
+    setDestination([randomInteger(minLng, maxLng), randomInteger(minLat, maxLat)]);
+
+    console.log(origin, destination);
 
   };
 
@@ -73,8 +71,24 @@ function App() {
       <div id='container'>
         <h1>Phase 2 Project</h1>
         <button onClick={handleStart} style={{margin: '20px'}} >Start game!</button>
-        <div id='map guess form'>
-          <Map point1={origin} point2={destination}/>
+        <div id='mapdiv'>
+          <Map
+            height={200}
+            width={200}
+            initialViewState={{
+              longitude: -100,
+              latitude: 40,
+              zoom: 3
+            }}
+            style={{width: '100vw', height: '100vh'}}
+            mapStyle="mapbox://styles/mapbox/streets-v12"
+            mapboxAccessToken={accessToken}
+            >
+              <Marker longitude={-70.9} latitude={42.35} anchor="bottom"/>
+              <Marker longitude={-72.9} latitude={43.35} anchor="bottom"/>
+
+            </Map>
+                  
           <GuessForm />
         </div>
         <div id='scoreboard'>Scoreboard goes here</div>
