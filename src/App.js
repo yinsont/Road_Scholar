@@ -9,25 +9,32 @@ import Map, {Marker} from 'react-map-gl';
 
 function App() {
 
-  const [profile, setProfile] = useState('driving');
-  const [origin, setOrigin] = useState([-70.9, 42.35]);
-  const [destination, setDestination] = useState([-72.9, 43.35]);
-  accessToken = 'pk.eyJ1IjoicmFjcXVlbGdsaWNrbWFuIiwiYSI6ImNsZ3FxdGpzYzAzYXczZGx6NmtkanN2Z3YifQ.yK7-WEliO2PFq4PxgG5QFw'
+  accessToken = 'pk.eyJ1IjoicmFjcXVlbGdsaWNrbWFuIiwiYSI6ImNsZ3FxdGpzYzAzYXczZGx6NmtkanN2Z3YifQ.yK7-WEliO2PFq4PxgG5QFw';
 
-  console.log(origin[0])
+  const [profile, setProfile] = useState('driving');
+  const [originLng, setOriginLng] = useState(-70.9);
+  const [originLat, setOriginLat] = useState(42.35);
+  const [destinationLng, setDestinationLng] = useState(-72.9);
+  const [destinationLat, setDestinationLat] = useState(43.35);
 
   function handleStart() {
     console.log('time to start the game - go fetch the random points');
 
     // fetch two random points in the usa and set to origin and destination
-    generateCoordinates();
+    const randomOrigin = generateCoordinates();
+    const randomDestination = generateCoordinates();
 
-    // feed origin and destination into Map to create markers on the map
+    // create markers on the map 
+    setOriginLng(randomOrigin[0]);
+    setOriginLat(randomOrigin[1]);
+    setDestinationLng(randomDestination[0]);
+    setDestinationLat(randomDestination[1]);
+
     // display route between them?
     // get responses from GuessForm 
     // compare to fetched data from this handleStart function
 
-    // fetch(`https://api.mapbox.com/directions/v5/mapbox/${profile}/${origin};${destination}?access_token=${accessToken}`)
+    // fetch(`https://api.mapbox.com/directions/v5/mapbox/${profile}/${randomOrigin};${randomDestination}?access_token=${accessToken}`)
     //   .then((res) => res.json())
     //   .then((data) => {
     //     console.log(data);
@@ -40,31 +47,37 @@ function App() {
     return swapped;
   };
 
+  // generate random numbers within these bounds (lng, lat)
+  function randomInteger(min, max) {
+    return Math.floor(Math.random() * (max - min) ) + min;
+  };
+
   function generateCoordinates() {
     console.log('generating coordinates');
 
-    // lat bounds: 18.91619 --> 71.35776
-    // lng bounds: -171.79111 --> -66.96466
-    const minLat = 18.91619;
-    const maxLat = 71.35776;
-    const minLng = -171.79111;
-    const maxLng = -66.96466;
+    const minLat = 24.7433195;
+    const maxLat = 49.3457868;
+    const minLng = -124.7844079;
+    const maxLng = -66.9513812;
 
-    // generate random numbers within these bounds (lng, lat)
-    function randomInteger(min, max) {
-      return Math.floor(Math.random() * (max - min) ) + min;
-    };
+    const coordinates = [randomInteger(minLng, maxLng), randomInteger(minLat, maxLat)];
 
     // check that they are on land in the us
+    checkUS(coordinates);
 
-    // https://api.mapbox.com/geocoding/v5/mapbox.places/-73.989,40.733.json?limit=1&country=us&access_token=pk.eyJ1IjoicmFjcXVlbGdsaWNrbWFuIiwiYSI6ImNsZ3FxdGpzYzAzYXczZGx6NmtkanN2Z3YifQ.yK7-WEliO2PFq4PxgG5QFw
+    return coordinates;
+  }
 
-    // set origin and destination
-    setOrigin([randomInteger(minLng, maxLng), randomInteger(minLat, maxLat)]);
-    setDestination([randomInteger(minLng, maxLng), randomInteger(minLat, maxLat)]);
+  function checkUS(coordinates) {
+    console.log('checking if coordinates are in the US');
 
-    console.log(origin, destination);
-
+    fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${coordinates}.json?limit=1&country=us&access_token=${accessToken}`)
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.features.length === 0) {
+        console.log('point not in the US');
+      };
+    });
   };
 
   return (
@@ -85,13 +98,12 @@ function App() {
             mapStyle="mapbox://styles/mapbox/streets-v12"
             mapboxAccessToken={accessToken}
             >
-              <Marker longitude={-70.9} latitude={42.35} anchor="bottom"/>
-              <Marker longitude={-72.9} latitude={43.35} anchor="bottom"/>
-
+              <Marker longitude={originLng} latitude={originLat} anchor="bottom"/>
+              <Marker longitude={destinationLng} latitude={destinationLat} anchor="bottom"/>
             </Map>
-                  
-          <GuessForm />
+                
         </div>
+        <GuessForm />
         <div id='scoreboard'>Scoreboard goes here</div>
       </div>
     </div>

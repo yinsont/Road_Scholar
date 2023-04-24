@@ -20,7 +20,8 @@ code {
 #mapdiv {
   position: relative;
   margin: 50px;
-  height: 30vh;
+  height: 200px;
+  width: 200px;
 }
 
 /* .map-container {
