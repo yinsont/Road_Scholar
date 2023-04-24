@@ -8,7 +8,7 @@ function GuessForm() {
     function handleSubmit(e) {
         e.preventDefault();
         console.log('guess submitted. check against fetched data');
-    }
+    };
 
     return (
         <div>
@@ -29,4 +29,4 @@ function GuessForm() {
     )
 }
 
-export default GuessForm
+export default GuessForm;

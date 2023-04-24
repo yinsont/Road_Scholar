@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 mapboxgl.accessToken = 'pk.eyJ1IjoicmFjcXVlbGdsaWNrbWFuIiwiYSI6ImNsZ3FxdGpzYzAzYXczZGx6NmtkanN2Z3YifQ.yK7-WEliO2PFq4PxgG5QFw';
 
-function Map() {
+function Map({ point1, point2 }) {
 
     const mapContainer = useRef(null);
     const map = useRef(null);
@@ -20,11 +20,11 @@ function Map() {
             });
 
             const originMarker = new mapboxgl.Marker()
-                .setLngLat([lng -2, lat])
+                .setLngLat(point1)
                 .addTo(map.current);
 
             const destinationMarker = new mapboxgl.Marker()
-                .setLngLat([lng - 1, lat + 1])
+                .setLngLat(point2)
                 .addTo(map.current);
         });
     
