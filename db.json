@@ -4,6 +4,11 @@
             "id": 1,
             "name": "Rogue AI",
             "score": 900
+        },
+        {
+            "id": 2,
+            "name": "Rogue AI2",
+            "score": 500
         }
     ]
 }
