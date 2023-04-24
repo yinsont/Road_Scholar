@@ -1,10 +1,20 @@
-import React from 'react'
+import {React, useState} from 'react'
+import Game from './Game'
 
 function Start() {
+
+  const [presentScreen, setPresentScreen] = useState(false)
+
+  function handleStart(){
+      setPresentScreen(!presentScreen)
+  }
   return (
+    
+    // <button onClick = {handleStart}/>
     <div>
-        <h1>Start</h1>
+      {presentScreen ? <Game/> : <button onClick = {handleStart} id = {'Start-Button'}>Start</button>}
     </div>
+    
   )
 }
 

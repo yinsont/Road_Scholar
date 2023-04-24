@@ -1,5 +1,5 @@
-import './App.css';
-import Start from './components/Start';
+import "./App.css";
+import Start from "./Start";
 
 function App() {
   return (
