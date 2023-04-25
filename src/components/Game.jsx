@@ -9,6 +9,8 @@ function Game() {
   const [profile, setProfile] = useState('driving');
   const [origin, setOrigin] = useState([-70.9, 42.35]);
   const [destination, setDestination] = useState([-72.9, 43.35]);
+  const [duration, setDuration] = useState(0)
+  const [distance, setDistance] = useState(0)
   accessToken = 'pk.eyJ1IjoicmFjcXVlbGdsaWNrbWFuIiwiYSI6ImNsZ3FxdGpzYzAzYXczZGx6NmtkanN2Z3YifQ.yK7-WEliO2PFq4PxgG5QFw'
 
   function handleStart() {
@@ -64,20 +66,26 @@ function Game() {
     //https://api.mapbox.com/directions/v5/mapbox/driving/-73.976231%2C40.610636%3B-73.920889%2C40.646246?alternatives=true&geometries=geojson&language=en&overview=simplified&steps=true&access_token=YOUR_MAPBOX_ACCESS_TOKEN
   };
 
-  // useEffect(() => {
-  //   fetch(`https://api.mapbox.com/directions/v5/mapbox/${profile}/${origin};${destination}?alternatives=false&geometries=geojson&language=en&overview=simplified&steps=false&access_token=${accessToken}`)
-  //   .then((res) => res.json())
-  //   .then(data => console.log(data))//driving duration: 13743.82 distance 253610.109
-  // },[])
+  useEffect(() => {
+    fetch(`https://api.mapbox.com/directions/v5/mapbox/${profile}/${origin};${destination}?alternatives=false&geometries=geojson&language=en&overview=simplified&steps=false&access_token=${accessToken}`)
+    .then((res) => res.json())
+    .then(data => {
+      setDistance(data.routes[0].distance)
+      setDuration(data.routes[0].duration)
+      // console.log(data)
+    })//driving duration: 13743.82 distance 253610.109
+  },[])
 
-  // https://docs.mapbox.com/help/tutorials/getting-started-directions-api/
+
+  // console.log(distance,duration)
+  // https://docs.mapbox.com/help/tutorials/getting-started-directions-api/h
   // https://docs.mapbox.com/playground/directions/
 
   return (
     <div>
 
       <Scoreboard/>
-      <AnswerForm/>
+      <AnswerForm distance = {distance} duration = {duration}/>
       <Map origin={origin} destination={destination}/>
     </div>
   )

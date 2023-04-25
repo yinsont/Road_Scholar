@@ -19,6 +19,7 @@ function Map({ origin, destination }) {
                 style: 'mapbox://styles/mapbox/streets-v12',
                 center: [lng, lat],
                 zoom: zoom
+                //pass duraction and distnce into answerform
             });
 
             const originMarker = new mapboxgl.Marker()
@@ -28,6 +29,7 @@ function Map({ origin, destination }) {
             const destinationMarker = new mapboxgl.Marker()
                 .setLngLat(destination) //end
                 .addTo(map.current);
+            
         });
     
 
