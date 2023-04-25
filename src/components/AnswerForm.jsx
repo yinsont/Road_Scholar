@@ -17,13 +17,13 @@ function AnswerForm({distance, duration}) {
     // })
     // .then(res => res.json())
     let submition = {
-      // distance: inputDistance > distance/1609.344 ? ((inputDistance - (distance/1609.344))/(distance/1609.344)) : (inputDistance/(distance/1609.344)),
+      distance: inputDistance > distance/1609.344 ? ((inputDistance - (distance/1609.344))/(distance/1609.344)) : (inputDistance/(distance/1609.344)),
       minutes: inputMinutes > duration ?  Math.abs(1-(inputMinutes%duration)) : (inputMinutes/(duration)),
     }
 
     // console.log(distance)
     // console.log(inputDistance)
-    console.log(distance/1609.344, submition)
+    console.log(submition)
   }
   return (
     <div id = 'form'>Form
