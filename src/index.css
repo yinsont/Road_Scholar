@@ -14,14 +14,12 @@ code {
 
 .container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 #mapdiv {
   position: relative;
   margin: 50px;
-  height: 200px;
-  width: 200px;
 }
 
 /* .map-container {
