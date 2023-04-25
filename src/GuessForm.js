@@ -13,13 +13,13 @@ function GuessForm({ distance, duration }) {
     const newAnswer = {
         name: name,
         score: {
-            distance: distance.toFixed(3),
-            duration: duration.toFixed(3),
-            distanceGuess: parseInt(inputDistance),
-            durationGuess: parseInt(inputDuration),
-            distancePercentError: (Math.abs(parseInt(inputDistance)-distance)/distance * 100).toFixed(1),
-            durationPercentError: (Math.abs(parseInt(inputDuration)-duration)/duration * 100).toFixed(1),
-            overallScore: ((Math.abs(parseInt(inputDistance)-distance)/distance * 100).toFixed(1) + (Math.abs(parseInt(inputDuration)-duration)/duration * 100).toFixed(1)) / 2,
+            distance: parseFloat(distance.toFixed(3)),
+            duration: parseFloat(duration.toFixed(3)),
+            distanceGuess: inputDistance,
+            durationGuess: inputDuration,
+            distancePercentError: parseFloat((Math.abs(inputDistance-distance)/distance * 100).toFixed(1)),
+            durationPercentError: parseFloat((Math.abs(inputDuration-duration)/duration * 100).toFixed(1)),
+            overallScore: (parseFloat((Math.abs(inputDistance-distance)/distance * 100).toFixed(1)) + parseFloat((Math.abs(inputDuration-duration)/duration * 100).toFixed(1))) / 2 
         }
     }
 
