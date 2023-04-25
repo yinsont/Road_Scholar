@@ -3,54 +3,15 @@
     {
       "name": "Yinson",
       "score": {
-        "distance": "1304.714",
-        "duration": "20.525",
+        "distance": 3017.524,
+        "duration": 46.796,
         "distanceGuess": 1000,
-        "durationGuess": 26,
-        "distancePercentError": "23.4",
-        "durationPercentError": "26.7",
-        "overallScore": null
+        "durationGuess": 18,
+        "distancePercentError": 66.9,
+        "durationPercentError": 61.5,
+        "overallScore": 64.2
       },
       "id": 1
-    },
-    {
-      "name": "Patrick",
-      "score": {
-        "distance": "1099.059",
-        "duration": "17.203",
-        "distanceGuess": 1200,
-        "durationGuess": 12,
-        "distancePercentError": "9.2",
-        "durationPercentError": "30.2",
-        "overallScore": null
-      },
-      "id": 2
-    },
-    {
-      "name": "Patrick",
-      "score": {
-        "distance": "2292.673",
-        "duration": "35.683",
-        "distanceGuess": 2300,
-        "durationGuess": 27,
-        "distancePercentError": "0.3",
-        "durationPercentError": "24.3",
-        "overallScore": null
-      },
-      "id": 3
-    },
-    {
-      "name": "Patrick",
-      "score": {
-        "distance": "1814.384",
-        "duration": "29.019",
-        "distanceGuess": 1800,
-        "durationGuess": 27,
-        "distancePercentError": "0.8",
-        "durationPercentError": "7.0",
-        "overallScore": null
-      },
-      "id": 4
     }
   ]
 }
