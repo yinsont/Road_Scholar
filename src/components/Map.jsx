@@ -2,11 +2,13 @@ import React, { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 mapboxgl.accessToken = 'pk.eyJ1IjoicmFjcXVlbGdsaWNrbWFuIiwiYSI6ImNsZ3FxdGpzYzAzYXczZGx6NmtkanN2Z3YifQ.yK7-WEliO2PFq4PxgG5QFw';
 
-function Map({ point1, point2 }) {
+function Map({ origin, destination }) {
 
+    // console.log(origin)
+    // console.log(destination) //-72.9, 43.35
     const mapContainer = useRef(null);
     const map = useRef(null);
-    const [lng, setLng] = useState(-70.9);
+    const [lng, setLng] = useState(-70.9); //focus view on origin, not coordinate
     const [lat, setLat] = useState(42.35);
     const [zoom, setZoom] = useState(9);
 
@@ -20,11 +22,11 @@ function Map({ point1, point2 }) {
             });
 
             const originMarker = new mapboxgl.Marker()
-                .setLngLat(point1)
+                .setLngLat(origin)
                 .addTo(map.current);
-
+                //start
             const destinationMarker = new mapboxgl.Marker()
-                .setLngLat(point2)
+                .setLngLat(destination) //end
                 .addTo(map.current);
         });
     
@@ -37,7 +39,8 @@ function Map({ point1, point2 }) {
                 setZoom(map.current.getZoom().toFixed(2));
             });
         });
-
+    
+        
     return (
         <div>
             <div ref={mapContainer} className="map-container" />

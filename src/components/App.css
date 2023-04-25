@@ -17,7 +17,8 @@ code {
 }
 
 .map-container {
-  height: 400px;
+  height: 90vh;
+  width: 90vw
   }
    
 .sidebar {

@@ -10,7 +10,7 @@ function Scoreboard() {
         .then(data => setScoreBoard(data))
     },[])
 
-    console.log(scoreBoard)
+    // console.log(scoreBoard)
     
   return (
     <div>
