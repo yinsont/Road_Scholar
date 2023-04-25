@@ -11,17 +11,18 @@ function Scoreboard() {
     },[])
 
     // console.log(scoreBoard)
+    scoreBoard.score.sort()
     
   return (
     <div>
         <ol>
-            {scoreBoard.map((score) => {
+            {/* {scoreBoard.map((score) => {
                 return (
                     <li>
                         <Score score = {score}/>
                     </li>
                 )
-            })}
+            })} */}
         </ol>
         
     </div>

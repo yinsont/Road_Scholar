@@ -1,10 +1,13 @@
 import {React, useState} from 'react'
 
 function AnswerForm({distance, duration}) {
-  
+
+  distance = distance/1609.344
   duration = duration/60
+
   const [inputDistance, setInputDistance] = useState(0)
   const [inputMinutes, setInputMinutes] = useState(0)
+  
   
   function answerSubmition (e) {
     e.preventDefault()
@@ -17,8 +20,8 @@ function AnswerForm({distance, duration}) {
     // })
     // .then(res => res.json())
     let submition = {
-      distance: inputDistance > distance/1609.344 ? ((inputDistance - (distance/1609.344))/(distance/1609.344)) : (inputDistance/(distance/1609.344)),
-      minutes: inputMinutes > duration ?  Math.abs(1-(inputMinutes%duration)) : (inputMinutes/(duration)),
+      distance: (inputDistance/distance) * 100,
+      minutes: (inputMinutes/duration) * 100
     }
 
     // console.log(distance)
