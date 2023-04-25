@@ -2,7 +2,7 @@ import './App.css';
 // import Map from './Map';
 import GuessForm from './GuessForm';
 import { accessToken } from 'mapbox-gl';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Map, {Marker} from 'react-map-gl';
 
 
@@ -16,29 +16,8 @@ function App() {
   const [destinationLng, setDestinationLng] = useState(-72.9);
   const [destinationLat, setDestinationLat] = useState(43.35);
 
-  function handleStart() {
-    console.log('time to start the game - go fetch the random points');
-
-    // fetch two random points in the usa and set to origin and destination
-    const randomOrigin = generateCoordinates();
-    const randomDestination = generateCoordinates();
-
-    // create markers on the map 
-    setOriginLng(randomOrigin[0]);
-    setOriginLat(randomOrigin[1]);
-    setDestinationLng(randomDestination[0]);
-    setDestinationLat(randomDestination[1]);
-
-    // display route between them?
-    // get responses from GuessForm 
-    // compare to fetched data from this handleStart function
-
-    // fetch(`https://api.mapbox.com/directions/v5/mapbox/${profile}/${randomOrigin};${randomDestination}?access_token=${accessToken}`)
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //   });
-  };
+  const [distance, setDistance] = useState(0); // in meters
+  const [duration, setDuration] = useState(0); // in seconds
 
   function swapLatLng(coords) {
     const swapped = [coords[1], coords[0]];
@@ -46,38 +25,63 @@ function App() {
     return swapped;
   };
 
+  function handleStart() {
+    console.log('time to start the game - go fetch the random points');
+
+    // fetch two random points in the usa and set to origin and destination
+    setUSCoordinates(setOriginLng, setOriginLat);
+    setUSCoordinates(setDestinationLng, setDestinationLat);
+  };
+
+  useEffect(() => {
+    const origin = [originLng,originLat];
+    const destination = [destinationLng,destinationLat];
+
+    fetch(`https://api.mapbox.com/directions/v5/mapbox/${profile}/${origin};${destination}?access_token=${accessToken}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setDistance(data.routes[0].duration);
+        setDuration(data.routes[0].distance);
+      });
+  }, [destinationLat]);
+
+  function setUSCoordinates(lngFunction, latFunction) {
+    console.log('generating coordinates');
+
+    let coordinates = generateCoordinates();
+    console.log(coordinates);
+
+    checkUS(coordinates, lngFunction, latFunction);
+  };
+
   // generate random numbers within these bounds (lng, lat)
-  function randomInteger(min, max) {
-    return Math.floor(Math.random() * (max - min) ) + min;
+  function randomNumber(min, max) {
+    return (Math.random() * (max - min)) + min;
   };
 
   function generateCoordinates() {
-    console.log('generating coordinates');
-
     const minLat = 24.7433195;
     const maxLat = 49.3457868;
     const minLng = -124.7844079;
     const maxLng = -66.9513812;
 
-    const coordinates = [randomInteger(minLng, maxLng), randomInteger(minLat, maxLat)];
-
-    // check that they are on land in the us
-    checkUS(coordinates);
-
-    return coordinates;
-  }
-
-  function checkUS(coordinates) {
-    console.log('checking if coordinates are in the US');
-
-    fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${coordinates}.json?limit=1&country=us&access_token=${accessToken}`)
-    .then((res) => res.json())
-    .then((data) => {
-      if (data.features.length === 0) {
-        console.log('point not in the US');
-      };
-    });
+    return [randomNumber(minLng, maxLng), randomNumber(minLat, maxLat)];
   };
+
+  function checkUS(coordinates, lngFunction, latFunction) { 
+    fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${coordinates}.json?limit=1&country=us&access_token=${accessToken}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.features.length !== 0) {
+          console.log('good point - in the US!')
+          lngFunction(coordinates[0]);
+          latFunction(coordinates[1]);
+        } else {
+          console.log('bad point - not in the US!')
+          setUSCoordinates(lngFunction, latFunction); 
+        }
+      });
+  }
 
   return (
     <div className="App">
@@ -97,7 +101,7 @@ function App() {
             mapStyle="mapbox://styles/mapbox/streets-v12"
             mapboxAccessToken={accessToken}
             >
-              <Marker longitude={originLng} latitude={originLat} anchor="bottom"/>
+              <Marker longitude={originLng} latitude={originLat} anchor="bottom" color='red'/>
               <Marker longitude={destinationLng} latitude={destinationLat} anchor="bottom"/>
             </Map>
                 
