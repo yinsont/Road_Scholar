@@ -4,6 +4,7 @@ import StartButton from './StartButton';
 import { Link, Route, Routes } from 'react-router-dom';
 import Home from './Home';
 import ScoreboardContainer from './ScoreboardContainer';
+import Instructions from './Instructions';
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
 
       <Routes>
         <Route path='/' element={<Home />}/>
+        <Route path='/instructions' element={<Instructions />}/>
         <Route path='/scoreboard' element={<ScoreboardContainer />}/>
       </Routes> 
     </div>
