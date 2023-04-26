@@ -1,17 +1,136 @@
 {
   "scores": [
     {
-      "name": "Yinson",
-      "score": {
-        "distance": 3017.524,
-        "duration": 46.796,
-        "distanceGuess": 1000,
-        "durationGuess": 18,
-        "distancePercentError": 66.9,
-        "durationPercentError": 61.5,
-        "overallScore": 64.2
-      },
+      "name": "Racquel",
+      "timeStamp": "2023-4-26 12:36:23",
+      "distance": 1968.748,
+      "duration": 30.326,
+      "distanceGuess": 1380,
+      "durationGuess": 22,
+      "distancePercentError": 29.9,
+      "durationPercentError": 27.5,
+      "overallScore": 28.7,
       "id": 1
+    },
+    {
+      "name": "Racquel",
+      "timeStamp": "2023-4-26 12:36:42",
+      "distance": 672.991,
+      "duration": 11.121,
+      "distanceGuess": 800,
+      "durationGuess": 12,
+      "distancePercentError": 18.9,
+      "durationPercentError": 7.9,
+      "overallScore": 13.4,
+      "id": 2
+    },
+    {
+      "name": "Racquel",
+      "timeStamp": "2023-4-26 12:39:20",
+      "distance": 1461.873,
+      "duration": 22.878,
+      "distanceGuess": 1600,
+      "durationGuess": 23,
+      "distancePercentError": 9.4,
+      "durationPercentError": 0.5,
+      "overallScore": 4.95,
+      "id": 3
+    },
+    {
+      "name": "Mohammad",
+      "timeStamp": "2023-4-26 12:54:16",
+      "distance": 1489.137,
+      "duration": 23.376,
+      "distanceGuess": 800,
+      "durationGuess": 10,
+      "distancePercentError": 46.3,
+      "durationPercentError": 57.2,
+      "overallScore": 51.75,
+      "id": 4
+    },
+    {
+      "name": "Racquel",
+      "timeStamp": "2023-4-26 14:40:32",
+      "distance": 1524.078,
+      "duration": 24.03,
+      "distanceGuess": 2000,
+      "durationGuess": 35,
+      "distancePercentError": 31.2,
+      "durationPercentError": 45.7,
+      "overallScore": 38.45,
+      "id": 7
+    },
+    {
+      "name": "Josh",
+      "timeStamp": "2023-4-26 14:41:48",
+      "distance": 951.87,
+      "duration": 16.076,
+      "distanceGuess": 1400,
+      "durationGuess": 8,
+      "distancePercentError": 47.1,
+      "durationPercentError": 50.2,
+      "overallScore": 48.65,
+      "id": 9
+    },
+    {
+      "name": "Racquel",
+      "timeStamp": "2023-4-26 14:58:40",
+      "distance": 1581.586,
+      "duration": 24.279,
+      "distanceGuess": 1400,
+      "durationGuess": 18,
+      "distancePercentError": 11.5,
+      "durationPercentError": 25.9,
+      "overallScore": 18.7,
+      "id": 10
+    },
+    {
+      "name": "",
+      "timeStamp": "2023-4-26 15:3:28",
+      "distance": 558.09,
+      "duration": 8.605,
+      "distanceGuess": "",
+      "durationGuess": "",
+      "distancePercentError": 100,
+      "durationPercentError": 100,
+      "overallScore": 100,
+      "id": 11
+    },
+    {
+      "name": "Cliff",
+      "timeStamp": "2023-4-26 16:17:53",
+      "distance": 755.008,
+      "duration": 12.03,
+      "distanceGuess": 100,
+      "durationGuess": 10,
+      "distancePercentError": 86.8,
+      "durationPercentError": 16.9,
+      "overallScore": 51.849999999999994,
+      "id": 12
+    },
+    {
+      "name": "Yinson",
+      "timeStamp": "2023-4-26 16:21:48",
+      "distance": 1083.527,
+      "duration": 17.214,
+      "distanceGuess": 2000,
+      "durationGuess": 30,
+      "distancePercentError": 84.6,
+      "durationPercentError": 74.3,
+      "overallScore": 79.44999999999999,
+      "id": 13
+    },
+    {
+      "name": "Yinson",
+      "timeStamp": "2023-4-26 16:22:39",
+      "distance": 461.357,
+      "duration": 10.449,
+      "distanceGuess": 300,
+      "durationGuess": 7,
+      "distancePercentError": 35,
+      "durationPercentError": 33,
+      "overallScore": 6600,
+      "id": 14
     }
   ]
 }

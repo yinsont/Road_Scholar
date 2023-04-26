@@ -1,27 +1,62 @@
 import './App.css';
 import React, { useState } from 'react'
-import MapContainer from './MapContainer';
-import Scoreboard from './Scoreboard';
+import StartButton from './StartButton';
+import { Link, Route, Routes } from 'react-router-dom';
+import Home from './Home';
 
 function App() {
 
-  const [distance, setDistance] = useState(0); // in meters
-  const [duration, setDuration] = useState(0); // in seconds
+  const accessToken = 'pk.eyJ1IjoicmFjcXVlbGdsaWNrbWFuIiwiYSI6ImNsZ3FxdGpzYzAzYXczZGx6NmtkanN2Z3YifQ.yK7-WEliO2PFq4PxgG5QFw';
 
-  function onDataFetch(distance, duration) {
-    // reading distance in meters --> convert to miles
-    setDistance(distance/1609.344);
-    // reading duration in seconds --> convert to hours
-    setDuration(duration/60/60);
+  const [originLng, setOriginLng] = useState(8);
+  const [originLat, setOriginLat] = useState(15);
+  const [destinationLng, setDestinationLng] = useState(9);
+  const [destinationLat, setDestinationLat] = useState(16);
+
+  const [inGame, setInGame] = useState(false);
+
+  function onSetOrigin(lng, lat) {
+    setOriginLng(lng);
+    setOriginLat(lat);
+  };
+
+  function onSetDestination(lng, lat) {
+    setDestinationLng(lng);
+    setDestinationLat(lat);
+  }
+
+  function onGameStart(bool) {
+    setInGame(bool)
   }
   
   return (
     <div className="App">
       <h1>Phase 2 Project</h1>
-      <div id='main-container'>
-        <MapContainer onDataFetch={onDataFetch}/>
-        <Scoreboard distance={distance} duration={duration}/>
-      </div>
+
+      {/* <nav className="navbar">
+        <Link className='link' to='/' >Home</Link>
+        <Link className='link' to='/scoreboard' >Scoreboard</Link>
+      </nav> */}
+
+      <StartButton 
+        onSetOrigin={onSetOrigin} 
+        onSetDestination={onSetDestination}
+        accessToken={accessToken}
+        onGameStart={onGameStart}
+      />
+      <Home 
+        accessToken={accessToken}
+        originLng={originLng}
+        originLat={originLat}
+        destinationLng={destinationLng}
+        destinationLat={destinationLat}
+        onGameStart={onGameStart}
+        inGame={inGame}
+      />
+{/* 
+      <Routes>
+        <Route path='/start' element={<StartButton />}/>
+      </Routes> */}
     </div>
   );
 };
