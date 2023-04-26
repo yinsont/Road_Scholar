@@ -95,6 +95,30 @@
       "durationPercentError": 100,
       "overallScore": 100,
       "id": 11
+    },
+    {
+      "name": "Josh",
+      "timeStamp": "2023-4-26 16:38:50",
+      "distance": 312.721,
+      "duration": 4.816,
+      "distanceGuess": 270,
+      "durationGuess": 3,
+      "distancePercentError": 13.7,
+      "durationPercentError": 37.7,
+      "overallScore": 25.7,
+      "id": 12
+    },
+    {
+      "name": "Yin",
+      "timeStamp": "2023-4-26 16:41:2",
+      "distance": 2857.542,
+      "duration": 44.005,
+      "distanceGuess": 6000,
+      "durationGuess": 70,
+      "distancePercentError": 110,
+      "durationPercentError": 59.1,
+      "overallScore": 84.55,
+      "id": 13
     }
   ]
 }

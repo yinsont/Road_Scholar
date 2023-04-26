@@ -38,19 +38,17 @@ function GuessForm({ distance, duration, onNewAnswer, onGameStart }) {
         console.log(newAnswer);
 
         fetch('http://localhost:4000/scores', {
-        method : 'POST',
-        headers : {
-            'Content-Type' : 'application/json'
-        },
-        body: JSON.stringify(newAnswer)
+            method : 'POST',
+            headers : {
+                'Content-Type' : 'application/json'
+            },
+            body: JSON.stringify(newAnswer)
         })
             .then(res => res.json())
             .then((data) => {
                 console.log(data)
                 onNewAnswer(data);
             })
-
-        // navigate(`/answer`);
 
     }
 
