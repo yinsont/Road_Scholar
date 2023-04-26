@@ -42,18 +42,22 @@ function GuessForm({ distance, duration }) {
     <div id='form'>
         <form onSubmit = {handleSubmitAnswer} >
             <input
+                type='text'
                 value={name}
                 onChange={(e) => {setName(e.target.value)}}
                 placeholder='Name'
             />
             <br></br>
             <input 
+                type='number'
+                step='100'
                 value={inputDistance}
                 onChange = {(e) => {setInputDistance(parseInt(e.target.value))}}
                 placeholder='Distance (miles)'
             />
             <br></br>
             <input 
+                type='number'
                 value={inputDuration}
                 onChange = {(e) => {setInputDuration(parseInt(e.target.value))}} 
                 placeholder='Duration (hours)'

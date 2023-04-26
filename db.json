@@ -12,6 +12,19 @@
         "overallScore": 64.2
       },
       "id": 1
+    },
+    {
+      "name": "",
+      "score": {
+        "distance": 850.624,
+        "duration": 14.523,
+        "distanceGuess": null,
+        "durationGuess": "",
+        "distancePercentError": null,
+        "durationPercentError": 100,
+        "overallScore": null
+      },
+      "id": 2
     }
   ]
 }

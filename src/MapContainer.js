@@ -11,22 +11,6 @@ function MapContainer({ onDataFetch }) {
     const [destinationLng, setDestinationLng] = useState(-72.9);
     const [destinationLat, setDestinationLat] = useState(43.35);
 
-    
-
-    function swapLatLng(coords) {
-        const swapped = [coords[1], coords[0]];
-        console.log(swapped);
-        return swapped;
-    };
-
-    function handleStart() {
-        console.log('time to start the game - go fetch the random points');
-
-        // fetch two random points in the usa and set to origin and destination
-        setUSCoordinates(setOriginLng, setOriginLat);
-        setUSCoordinates(setDestinationLng, setDestinationLat);
-    };
-
     useEffect(() => {
         const origin = [originLng,originLat];
         const destination = [destinationLng,destinationLat];
@@ -37,6 +21,14 @@ function MapContainer({ onDataFetch }) {
                 onDataFetch(data.routes[0].distance, data.routes[0].duration);
             });
     }, [destinationLat]);
+
+    function handleStart() {
+        console.log('time to start the game - go fetch the random points');
+
+        // fetch two random points in the usa and set to origin and destination
+        setUSCoordinates(setOriginLng, setOriginLat);
+        setUSCoordinates(setDestinationLng, setDestinationLat);
+    };
 
     function setUSCoordinates(lngFunction, latFunction) {
         console.log('generating coordinates');
