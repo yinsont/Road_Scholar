@@ -3,26 +3,33 @@ import Score from './Score'
 
 function Scoreboard() {
 
-    const [scoreBoard, setScoreBoard] = useState([])
+    const [scores, setScores] = useState([])
     useEffect(() => {
-        fetch('http://localhost:3001/Scoreboard')
+        fetch('http://localhost:3001/scores')
         .then (res => res.json())
-        .then(data => setScoreBoard(data))
+        .then(data => setScores(data))
     },[])
 
     // console.log(scoreBoard)
-    scoreBoard.score.sort()
-    
+
+// let overallScore = 10000 - (.642*10000)
+
+
+// if ((distancePercentError < 10) && (durationPercentError < 10)){
+//   overallScore = overallScore + overallScore/5
+  
+// }
+// console.log(overallScore) -----------Sorting Algorithm
   return (
     <div>
         <ol>
-            {/* {scoreBoard.map((score) => {
+            {scores.map((score) => {
                 return (
                     <li>
                         <Score score = {score}/>
                     </li>
                 )
-            })} */}
+            })}
         </ol>
         
     </div>

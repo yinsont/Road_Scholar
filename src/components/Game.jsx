@@ -48,17 +48,17 @@ function Game() {
     const maxLng = -66.96466;
 
     // generate random numbers within these bounds (lng, lat)
-    function randomInteger(min, max) {
-      return Math.random() * (max - min) + min;
-    }
+    // function randomInteger(min, max) {
+    //   return Math.random() * (max - min) + min;
+    // }
 
-    let randomOrigin = [randomInteger(minLat, maxLat), randomInteger(minLng, maxLng)]
-    let randomDestination = [randomInteger(minLat, maxLat), randomInteger(minLng, maxLng)]
+    // let randomOrigin = [randomInteger(minLat, maxLat), randomInteger(minLng, maxLng)]
+    // let randomDestination = [randomInteger(minLat, maxLat), randomInteger(minLng, maxLng)]
 
-    setOrigin(randomOrigin);
-    setDestination(randomDestination);
+    // setOrigin(randomOrigin);
+    // setDestination(randomDestination);
 
-    console.log(origin, destination);
+    // console.log(origin, destination);
     // check that they are in the us
     // set origin and destination
     // https://api.mapbox.com/geocoding/v5/mapbox.places/-73.989,40.733.json?limit=1&country=us&access_token=pk.eyJ1IjoicmFjcXVlbGdsaWNrbWFuIiwiYSI6ImNsZ3FxdGpzYzAzYXczZGx6NmtkanN2Z3YifQ.yK7-WEliO2PFq4PxgG5QFw

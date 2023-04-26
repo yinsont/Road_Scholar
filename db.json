@@ -1,14 +1,17 @@
 {
-    "Scoreboard": [
-        {
-            "id": 1,
-            "name": "Rogue AI",
-            "score": 900
-        },
-        {
-            "id": 2,
-            "name": "Rogue AI2",
-            "score": 500
-        }
-    ]
+  "scores": [
+    {
+      "name": "Yinson",
+      "score": {
+        "distance": 3017.524,
+        "duration": 46.796,
+        "distanceGuess": 1000,
+        "durationGuess": 18,
+        "distancePercentError": 66.9,
+        "durationPercentError": 61.5,
+        "overallScore": 64.2
+      },
+      "id": 1
+    }
+  ]
 }
