@@ -3,13 +3,13 @@
     {
       "name": "Yinson",
       "score": {
-        "distance": "1304.714",
-        "duration": "20.525",
+        "distance": 3017.524,
+        "duration": 46.796,
         "distanceGuess": 1000,
-        "durationGuess": 26,
-        "distancePercentError": "23.4",
-        "durationPercentError": "26.7",
-        "overallScore": null
+        "durationGuess": 18,
+        "distancePercentError": 66.9,
+        "durationPercentError": 61.5,
+        "overallScore": 64.2
       },
       "id": 1
     }
