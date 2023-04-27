@@ -21,20 +21,20 @@ const OVERLAY_STYLES = { //Makes background dark and unclickable
 }
 
 function Modal({open, onClose, score}) {
-    console.log(score)
+    // console.log(score)
     if (!open) return null
   return (
     <>
         <div style={OVERLAY_STYLES}/> 
         <div style = {MODAL_STYLES}>
-            {((score.distancePercentError+score.durationPercentError)/2) < 65 ? <h2>Good Job</h2> : <h2>Do better{<p>( う-´)づ︻╦̵̵̿╤── \(˚☐˚”)/</p>}</h2>}
-            <p>Score:</p>
-            <h2>{score.overallScore}</h2>
-            <h5>Distance: {score.distance} Miles</h5>
-            <h5>Distance Guessed: {score.distanceGuess} Miles</h5>
-            <h5>Duration: {score.duration} Hours</h5>
-            <h5>Duration Guessed: {score.durationGuess} Hours</h5>
-            <button onClick = {onClose}>Close</button>
+        {((score.distancePercentError+score.durationPercentError)/2) < 65 ? <><h2>Good Job</h2><p>(☞ﾟヮﾟ)☞             ☜(ﾟヮﾟ☜)</p></> : <h2>Do better{<p>(╯°□°）╯︵ ┻━┻</p>}</h2>}
+        <p>Score:</p>
+        <h2>{score.overallScore}</h2>
+        <h5>Distance: {score.distance} Miles</h5>
+        <h5>Distance Guessed: {score.distanceGuess} Miles</h5>
+        <h5>Duration: {score.duration} Hours</h5>
+        <h5>Duration Guessed: {score.durationGuess} Hours</h5>
+        <button onClick = {onClose}>Close</button>
         </div>
     </>
   )

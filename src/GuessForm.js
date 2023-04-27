@@ -46,7 +46,19 @@ function GuessForm({ distance, duration }) {
             }
         );
 
-        onNewAnswer(submission);
+        onNewAnswer(
+            {
+                name: name,
+                timeStamp: dateTime,
+                distance: parseFloat(distance.toFixed(3)),
+                duration: parseFloat(duration.toFixed(3)),
+                distanceGuess: inputDistance,
+                durationGuess: inputDuration,
+                distancePercentError: distancePercentError,
+                durationPercentError: durationPercentError,
+                overallScore: overallScore
+            }
+        );
 
     }
 

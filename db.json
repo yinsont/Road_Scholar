@@ -25,7 +25,52 @@
       "id": 6
     },
     {
+      "name": "Racquel",
+      "timeStamp": "2023-4-27 16:49:16",
+      "distance": 1679.542,
+      "duration": 26.66,
+      "distanceGuess": 2500,
+      "durationGuess": 38,
+      "distancePercentError": 48.9,
+      "durationPercentError": 42.5,
+      "overallScore": 5848,
       "id": 7
+    },
+    {
+      "name": "Racque",
+      "timeStamp": "2023-4-27 16:50:7",
+      "distance": 88.727,
+      "duration": 1.754,
+      "distanceGuess": 200,
+      "durationGuess": 3,
+      "distancePercentError": 125.4,
+      "durationPercentError": 71,
+      "overallScore": 180,
+      "id": 8
+    },
+    {
+      "name": "Racquel",
+      "timeStamp": "2023-4-27 16:52:22",
+      "distance": 1265.292,
+      "duration": 19.612,
+      "distanceGuess": 1800,
+      "durationGuess": 21,
+      "distancePercentError": 42.3,
+      "durationPercentError": 7.1,
+      "overallScore": 8367,
+      "id": 9
+    },
+    {
+      "name": "Racquel",
+      "timeStamp": "2023-4-27 16:54:46",
+      "distance": 1305.647,
+      "duration": 19.753,
+      "distanceGuess": 1400,
+      "durationGuess": 20,
+      "distancePercentError": 7.2,
+      "durationPercentError": 1.3,
+      "overallScore": 11171,
+      "id": 11
     }
   ]
 }
