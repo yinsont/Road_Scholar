@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { MyContext } from "./MyProvider";
 import scoreCalculator from './scoreCalculator';
+import Modal from './Modal';
 
 function GuessForm({ distance, duration }) {
     // reading in distance and duration as miles and hours
@@ -9,13 +10,16 @@ function GuessForm({ distance, duration }) {
     const [name, setName] = useState('');
     const [inputDistance, setInputDistance] = useState('');
     const [inputDuration, setInputDuration] = useState('');
+    // const [modal, setModal] = useState(false)
+    const[isOpen, setIsOpen] = useState(false)
 
     const { onNewAnswer, onStartGame } = useContext(MyContext);
   
     function handleSubmitAnswer(e) {
         e.preventDefault();
 
-        onStartGame(false);
+        setIsOpen(!isOpen)
+        // console.log(isOpen)
 
         const today = new Date();
         const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
@@ -41,13 +45,36 @@ function GuessForm({ distance, duration }) {
                 durationPercentError: durationPercentError,
                 overallScore: overallScore
             }
-        ) 
+        )
+    }
+    const today = new Date();
+    const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    const dateTime = date+' '+time;
 
+    const distancePercentError = parseFloat((Math.abs(inputDistance-distance)/distance * 100).toFixed(1));
+    const durationPercentError = parseFloat((Math.abs(inputDuration-duration)/duration * 100).toFixed(1));
+
+    let overallScore = 10000-((((distancePercentError+durationPercentError)/2)/100)*10000)
+    
+    overallScore = (scoreCalculator(overallScore, distance, duration, distancePercentError, durationPercentError))
+
+    let answer = {
+        name: name,
+        timeStamp: dateTime,
+        distance: parseFloat(distance.toFixed(3)),
+        duration: parseFloat(duration.toFixed(3)),
+        distanceGuess: inputDistance,
+        durationGuess: inputDuration,
+        distancePercentError: distancePercentError,
+        durationPercentError: durationPercentError,
+        overallScore: overallScore
     }
 
   return (
     <div id='form'>
-        <form onSubmit = {handleSubmitAnswer} >
+        <form onSubmit = {handleSubmitAnswer}>
+            <Modal open = {isOpen} onClose={() => setIsOpen(false)} score = {answer}></Modal>
             <input
                 type='text'
                 value={name}

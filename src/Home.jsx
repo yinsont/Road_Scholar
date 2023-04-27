@@ -49,7 +49,7 @@ function Home() {
     }, [destinationLat]);
 
     return (
-        <div >
+        <div id = 'home'>
             <StartButton 
                 onSetOrigin={onSetOrigin} 
                 onSetDestination={onSetDestination}
