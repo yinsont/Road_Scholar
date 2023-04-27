@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Score from './Score'
+import { MyContext } from "./MyProvider";
 
-function ScoreboardContainer({ scores }) {
+function ScoreboardContainer() {
 
-  const scoresList = scores.slice(0,5).map((score) => {
+  const data = useContext(MyContext);
+
+  const dataToUse = window.location.pathname === '/scoreboard' ? data.scores : data.scores.slice(0,5);
+
+  const scoresList = dataToUse.map((score) => {
     return <Score key={score.timeStamp} score={score}/>
   })
 
@@ -17,4 +22,4 @@ function ScoreboardContainer({ scores }) {
   )
 }
 
-export default ScoreboardContainer
+export default ScoreboardContainer;

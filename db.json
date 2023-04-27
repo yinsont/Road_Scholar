@@ -119,6 +119,18 @@
       "durationPercentError": 59.1,
       "overallScore": 84.55,
       "id": 13
+    },
+    {
+      "name": "Racquel",
+      "timeStamp": "2023-4-27 10:35:33",
+      "distance": 1153.597,
+      "duration": 17.443,
+      "distanceGuess": 1800,
+      "durationGuess": 26,
+      "distancePercentError": 56,
+      "durationPercentError": 49.1,
+      "overallScore": 52.55,
+      "id": 14
     }
   ]
 }

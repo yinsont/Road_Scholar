@@ -1,5 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { MyContext } from "./MyProvider";
+import scoreCalculator from './scoreCalculator';
 
 function GuessForm({ distance, duration, onNewAnswer, onGameStart }) {
     // reading in distance and duration as miles and hours
@@ -7,6 +9,8 @@ function GuessForm({ distance, duration, onNewAnswer, onGameStart }) {
     const [name, setName] = useState('');
     const [inputDistance, setInputDistance] = useState('');
     const [inputDuration, setInputDuration] = useState('');
+
+    const { newAnswer } = useContext(MyContext);
 
     const navigate = useNavigate();
   
@@ -22,33 +26,26 @@ function GuessForm({ distance, duration, onNewAnswer, onGameStart }) {
 
         const distancePercentError = parseFloat((Math.abs(inputDistance-distance)/distance * 100).toFixed(1));
         const durationPercentError = parseFloat((Math.abs(inputDuration-duration)/duration * 100).toFixed(1));
+
+        let overallScore = 10000-((((distancePercentError+durationPercentError)/2)/100)*10000)
         
-        const newAnswer = {
-            name: name,
-            timeStamp: dateTime,
-            distance: parseFloat(distance.toFixed(3)),
-            duration: parseFloat(duration.toFixed(3)),
-            distanceGuess: inputDistance,
-            durationGuess: inputDuration,
-            distancePercentError: distancePercentError,
-            durationPercentError: durationPercentError,
-            overallScore: (distancePercentError + durationPercentError) / 2 
-        }
+        overallScore = (scoreCalculator(overallScore, distance, duration, distancePercentError, durationPercentError))
+        
+        newAnswer(
+            {
+                name: name,
+                timeStamp: dateTime,
+                distance: parseFloat(distance.toFixed(3)),
+                duration: parseFloat(duration.toFixed(3)),
+                distanceGuess: inputDistance,
+                durationGuess: inputDuration,
+                distancePercentError: distancePercentError,
+                durationPercentError: durationPercentError,
+                overallScore: overallScore
+            }
+        ) 
 
         console.log(newAnswer);
-
-        fetch('http://localhost:4000/scores', {
-            method : 'POST',
-            headers : {
-                'Content-Type' : 'application/json'
-            },
-            body: JSON.stringify(newAnswer)
-        })
-            .then(res => res.json())
-            .then((data) => {
-                console.log(data)
-                onNewAnswer(data);
-            })
 
     }
 
