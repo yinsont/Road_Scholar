@@ -1,8 +1,32 @@
 import React, { useState, useEffect } from 'react'
 import MapContainer from './MapContainer';
 import Scoreboard from './Scoreboard';
+import StartButton from './StartButton';
 
-function Home({ accessToken, originLng, originLat, destinationLng, destinationLat, inGame, onGameStart }) {
+function Home() {
+
+    const accessToken = 'pk.eyJ1IjoicmFjcXVlbGdsaWNrbWFuIiwiYSI6ImNsZ3FxdGpzYzAzYXczZGx6NmtkanN2Z3YifQ.yK7-WEliO2PFq4PxgG5QFw';
+
+    const [originLng, setOriginLng] = useState(8);
+    const [originLat, setOriginLat] = useState(15);
+    const [destinationLng, setDestinationLng] = useState(9);
+    const [destinationLat, setDestinationLat] = useState(16);
+  
+    const [inGame, setInGame] = useState(false);
+  
+    function onSetOrigin(lng, lat) {
+      setOriginLng(lng);
+      setOriginLat(lat);
+    };
+  
+    function onSetDestination(lng, lat) {
+      setDestinationLng(lng);
+      setDestinationLat(lat);
+    }
+  
+    function onGameStart(bool) {
+      setInGame(bool)
+    }
 
     const [distance, setDistance] = useState(0); // in meters
     const [duration, setDuration] = useState(0); // in seconds
@@ -25,20 +49,29 @@ function Home({ accessToken, originLng, originLat, destinationLng, destinationLa
     }, [destinationLat]);
 
     return (
-        <div id='main-container'>
-            <MapContainer 
+        <div >
+            <StartButton 
+                onSetOrigin={onSetOrigin} 
+                onSetDestination={onSetDestination}
                 accessToken={accessToken}
-                originLng={originLng}
-                originLat={originLat}
-                destinationLng={destinationLng}
-                destinationLat={destinationLat}
-            />
-            <Scoreboard 
-                distance={distance} 
-                duration={duration}
-                inGame={inGame}
                 onGameStart={onGameStart}
             />
+            <div id='main-container'>
+                <MapContainer 
+                    accessToken={accessToken}
+                    originLng={originLng}
+                    originLat={originLat}
+                    destinationLng={destinationLng}
+                    destinationLat={destinationLat}
+                />
+                <Scoreboard 
+                    distance={distance} 
+                    duration={duration}
+                    inGame={inGame}
+                    onGameStart={onGameStart}
+                />
+            </div>
+            
         </div>
     )
 }

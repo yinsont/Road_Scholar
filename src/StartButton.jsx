@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
+import { MyContext } from "./MyProvider";
 
-function StartButton({ onSetOrigin, onSetDestination, accessToken, onGameStart }) {
+function StartButton({ onSetOrigin, onSetDestination, accessToken }) {
+
+    const { onStartGame } = useContext(MyContext);
 
     function handleStart() {
         console.log('time to start the game - go fetch the random points');
-        onGameStart(true);
+        onStartGame(true);
 
         // fetch two random points in the usa and set to origin and destination
         setUSCoordinates(onSetOrigin);

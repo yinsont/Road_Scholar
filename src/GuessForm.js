@@ -1,20 +1,21 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
-import scoreCalculator from './ScoreCalculator';
+import { MyContext } from "./MyProvider";
+import scoreCalculator from './scoreCalculator';
 
-function GuessForm({ distance, duration, onNewAnswer, onGameStart }) {
+function GuessForm({ distance, duration }) {
     // reading in distance and duration as miles and hours
   
     const [name, setName] = useState('');
     const [inputDistance, setInputDistance] = useState('');
     const [inputDuration, setInputDuration] = useState('');
 
-    const navigate = useNavigate();
+    const { onNewAnswer, onStartGame } = useContext(MyContext);
   
     function handleSubmitAnswer(e) {
         e.preventDefault();
 
-        onGameStart(false);
+        onStartGame(false);
 
         const today = new Date();
         const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
@@ -27,36 +28,20 @@ function GuessForm({ distance, duration, onNewAnswer, onGameStart }) {
         let overallScore = 10000-((((distancePercentError+durationPercentError)/2)/100)*10000)
         
         overallScore = (scoreCalculator(overallScore, distance, duration, distancePercentError, durationPercentError))
-        console.log(overallScore)
-        const newAnswer = {
-            name: name,
-            timeStamp: dateTime,
-            distance: parseFloat(distance.toFixed(3)),
-            duration: parseFloat(duration.toFixed(3)),
-            distanceGuess: inputDistance,
-            durationGuess: inputDuration,
-            distancePercentError: distancePercentError,
-            durationPercentError: durationPercentError,
-            overallScore: overallScore
-        }
-
         
-        console.log(newAnswer);
-
-        fetch('http://localhost:4000/scores', {
-        method : 'POST',
-        headers : {
-            'Content-Type' : 'application/json'
-        },
-        body: JSON.stringify(newAnswer)
-        })
-            .then(res => res.json())
-            .then((data) => {
-                console.log(data)
-                onNewAnswer(data);
-            })
-
-        // navigate(`/answer`);
+        onNewAnswer(
+            {
+                name: name,
+                timeStamp: dateTime,
+                distance: parseFloat(distance.toFixed(3)),
+                duration: parseFloat(duration.toFixed(3)),
+                distanceGuess: inputDistance,
+                durationGuess: inputDuration,
+                distancePercentError: distancePercentError,
+                durationPercentError: durationPercentError,
+                overallScore: overallScore
+            }
+        ) 
 
     }
 
