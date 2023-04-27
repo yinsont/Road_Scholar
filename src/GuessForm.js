@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { MyContext } from "./MyProvider";
 import scoreCalculator from './scoreCalculator';
-import Modal from './Modal';
+import Modal from './AnswerModal';
 
 function GuessForm({ distance, duration }) {
     // reading in distance and duration as miles and hours
