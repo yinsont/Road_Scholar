@@ -3,17 +3,20 @@ import { useState, useEffect, createContext } from "react";
 export const MyContext = createContext({
   scores: [],
   newAnswer: () => {},
+  inGame: '',
+  onStartGame: () => {},
 });
 
 function MyProvider({ children }) {
 
   const [scores, setScores] = useState([]);
+  const [inGame, setInGame] = useState(null);
 
   useEffect(() => {
     fetch('http://localhost:4000/scores')
     .then((res) => res.json())
     .then((data) => {
-      data.sort(function(a, b){return a.overallScore-b.overallScore})
+      data.sort(function(a, b){return b.overallScore-a.overallScore})
       setScores(data);
     });
   }, [])
@@ -29,14 +32,18 @@ function MyProvider({ children }) {
       .then((res) => res.json())
       .then((data) => {
         setScores(
-          [...scores, data].sort(function(a, b){return a.overallScore-b.overallScore})
+          [...scores, data].sort(function(a, b){return b.overallScore-a.overallScore})
         )
       });
   };
 
+  function onStartGame(bool) {
+    setInGame(bool)
+  };
+
   return (
     <MyContext.Provider
-      value={{ scores: scores, newAnswer: newAnswer }}
+      value={{ scores: scores, newAnswer: newAnswer, inGame: inGame, onStartGame: onStartGame }}
     >
       {children}
     </MyContext.Provider>

@@ -131,6 +131,18 @@
       "durationPercentError": 49.1,
       "overallScore": 52.55,
       "id": 14
+    },
+    {
+      "name": "",
+      "timeStamp": "2023-4-27 11:31:46",
+      "distance": 142.319,
+      "duration": 7.436,
+      "distanceGuess": "",
+      "durationGuess": "",
+      "distancePercentError": 100,
+      "durationPercentError": 100,
+      "overallScore": 0,
+      "id": 15
     }
   ]
 }

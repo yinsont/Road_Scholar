@@ -10,14 +10,12 @@ function GuessForm({ distance, duration, onNewAnswer, onGameStart }) {
     const [inputDistance, setInputDistance] = useState('');
     const [inputDuration, setInputDuration] = useState('');
 
-    const { newAnswer } = useContext(MyContext);
-
-    const navigate = useNavigate();
+    const { newAnswer, onStartGame } = useContext(MyContext);
   
     function handleSubmitAnswer(e) {
         e.preventDefault();
 
-        onGameStart(false);
+        onStartGame(false);
 
         const today = new Date();
         const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
@@ -44,8 +42,6 @@ function GuessForm({ distance, duration, onNewAnswer, onGameStart }) {
                 overallScore: overallScore
             }
         ) 
-
-        console.log(newAnswer);
 
     }
 
