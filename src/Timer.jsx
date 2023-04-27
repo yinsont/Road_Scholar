@@ -1,37 +1,44 @@
-import {React, useEffect, useState} from 'react'
+import {React, useEffect, useState, useContext} from 'react'
+import { MyContext } from './MyProvider';
+import Modal from './TimerModal';
 
-function Timer({ inGame, onGameStart }) { //when press start game -> ingame = true
-                                                //submitForm -> ingame = false
-                                                //onGameStart -> nothing
-  /*
-    when inGame becomes true, start the timer
-    when submit is pressed on the GuessForm, change isGame to false
-  */
-//  const [timeRemaining, setTimeRemaining] = useState(10)
- const [timeLeft, setTimeLeft] = useState(10);
+function Timer() { 
 
- useEffect(() => {
-   // exit early when we reach 0
-   if (!timeLeft) return;
+ const { inGame, onStartGame, timeRemaining, onResetTime } = useContext(MyContext);
 
-   // save intervalId to clear the interval when the
-   // component re-renders
-   const intervalId = setInterval(() => {
-     setTimeLeft(timeLeft - 1);
-   }, 1000);
+ const [isOpen, setIsOpen] = useState(false);
 
-   // clear interval on re-render to avoid memory leaks
-   return () => clearInterval(intervalId);
+  function reset() {
+    onResetTime(10);
+    onStartGame(false);
+    setIsOpen(!isOpen);
+  }
 
-   
-   // add timeLeft as a dependency to re-rerun the effect
-   // when we update it
- }, [timeLeft]);
+  useEffect(() => {
 
+    let interval = null;
+
+    if (inGame) {
+
+      interval = setInterval(() => {
+        onResetTime(timeRemaining => timeRemaining - 1);
+      }, 1000);
+
+      if (timeRemaining === -1) {
+        reset();
+      }
+
+    } else if (inGame === false && timeRemaining !== 0) {
+      clearInterval(interval);
+    }
+    return () => clearInterval(interval);
+
+}, [inGame, timeRemaining]);
 
   return (
     <div id='timer'>
-        <h1>{timeLeft}</h1>
+        <Modal open={isOpen} onClose={() => setIsOpen(false)} ></Modal>
+        <h1>{timeRemaining}</h1>
     </div>
   )
 }

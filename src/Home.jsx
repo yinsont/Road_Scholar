@@ -11,50 +11,43 @@ function Home() {
     const [originLat, setOriginLat] = useState(15);
     const [destinationLng, setDestinationLng] = useState(9);
     const [destinationLat, setDestinationLat] = useState(16);
-  
-    const [inGame, setInGame] = useState(false);
-  
-    function onSetOrigin(lng, lat) {
-      setOriginLng(lng);
-      setOriginLat(lat);
-    };
-  
-    function onSetDestination(lng, lat) {
-      setDestinationLng(lng);
-      setDestinationLat(lat);
-    }
-  
-    function onGameStart(bool) {
-      setInGame(bool)
-    }
 
     const [distance, setDistance] = useState(0); // in meters
     const [duration, setDuration] = useState(0); // in seconds
-
-    const [profile, setProfile] = useState('driving');
-
+    
+    function onSetOrigin(coordinates) {
+      setOriginLng(coordinates[0]);
+      setOriginLat(coordinates[1]);
+    };
+  
+    function onSetDestination(coordinates) {
+      setDestinationLng(coordinates[0]);
+      setDestinationLat(coordinates[1]);
+    }
 
     useEffect(() => {
         const origin = [originLng,originLat];
         const destination = [destinationLng,destinationLat];
 
-        fetch(`https://api.mapbox.com/directions/v5/mapbox/${profile}/${origin};${destination}?access_token=${accessToken}`)
+        fetch(`https://api.mapbox.com/directions/v5/mapbox/driving/${origin};${destination}?access_token=${accessToken}`)
             .then((res) => res.json())
             .then((data) => {
                 // reading distance in meters --> convert to miles
                 setDistance(data.routes[0].distance/1609.344);
                 // reading duration in seconds --> convert to hours
                 setDuration(data.routes[0].duration/60/60);
-            });
+            })
+            .catch((error) => {
+                alert(`Sorry - here's a bug that we haven't quite figured out yet 🤷‍♀️ Pick a new point 🙃`)
+            })
     }, [destinationLat]);
 
     return (
-        <div id = 'home'>
+        <div >
             <StartButton 
                 onSetOrigin={onSetOrigin} 
                 onSetDestination={onSetDestination}
                 accessToken={accessToken}
-                onGameStart={onGameStart}
             />
             <div id='main-container'>
                 <MapContainer 
@@ -67,8 +60,6 @@ function Home() {
                 <Scoreboard 
                     distance={distance} 
                     duration={duration}
-                    inGame={inGame}
-                    onGameStart={onGameStart}
                 />
             </div>
             

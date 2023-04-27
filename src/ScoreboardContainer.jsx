@@ -14,7 +14,7 @@ function ScoreboardContainer() {
 
   return (
     <div>
-      <h1>Top 5 Guesses:</h1>
+      <h1>{window.location.pathname === '/scoreboard' ? 'Scoreboard' : 'Leaderboard'}</h1>
       <ol>
         {scoresList}
       </ol>

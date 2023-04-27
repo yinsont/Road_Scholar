@@ -3,24 +3,37 @@ import { MyContext } from "./MyProvider";
 
 function StartButton({ onSetOrigin, onSetDestination, accessToken }) {
 
-    const { onStartGame } = useContext(MyContext);
+    const { onStartGame, onResetTime } = useContext(MyContext);
 
     function handleStart() {
-        console.log('time to start the game - go fetch the random points');
         onStartGame(true);
+        onResetTime(10);
+        
+        console.log('##starting to fetch coordinates##')
 
-        // fetch two random points in the usa and set to origin and destination
-        setUSCoordinates(onSetOrigin);
-        setUSCoordinates(onSetDestination);
-    };
+        setUSCoordinates('origin', onSetOrigin);
+        setUSCoordinates('destination', onSetDestination);
 
-    function setUSCoordinates(setCoordinateFunction) {
-        console.log('generating coordinates');
 
-        let coordinates = generateCoordinates();
-        console.log(coordinates);
+        // console.log('##starting to fetch coordinates##')
+        // setUSCoordinates('origin')
+        //     .then((data) => {
+        //         console.log(data)
+        //         if (data){
+        //             onSetOrigin(data);
+        //         }
+        //         console.log('##fetched origin successfully##')
+        //         setUSCoordinates('destination')
+        //             .then((data) => {
+        //                 console.log(data)
+        //                 if (data){
+        //                     onSetDestination(data);
+        //                 }
+        //                 console.log('##fetched destination successfully##')
+        //             })
+        //     })
 
-        checkUS(coordinates, setCoordinateFunction);
+
     };
 
     // generate random numbers within these bounds (lng, lat)
@@ -28,28 +41,40 @@ function StartButton({ onSetOrigin, onSetDestination, accessToken }) {
         return (Math.random() * (max - min)) + min;
     };
 
-    function generateCoordinates() {
+    function setUSCoordinates(message, setFunction) {
+
         const minLat = 24.7433195;
         const maxLat = 49.3457868;
         const minLng = -124.7844079;
         const maxLng = -66.9513812;
 
-        return [randomNumber(minLng, maxLng), randomNumber(minLat, maxLat)];
-    };
+        let coordinates = [randomNumber(minLng, maxLng), randomNumber(minLat, maxLat)];
+        console.log('generating point:', message, coordinates);
 
-    function checkUS(coordinates, setCoordinateFunction) { 
+        // const response = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${coordinates}.json?limit=1&country=us&access_token=${accessToken}`)
+
+        // const data = await response.json()
+
+        // if (data.features.length !== 0) {
+        //     console.log(message, ' - good point - in the US!')
+        //     console.log(data.query)
+        //     return data.query;
+        // } 
+        //     console.log(message, ' - bad point - not in the US!')
+        //     setUSCoordinates(message); 
+    
         fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${coordinates}.json?limit=1&country=us&access_token=${accessToken}`)
             .then((res) => res.json())
             .then((data) => {
-            if (data.features.length !== 0) {
-                console.log('good point - in the US!')
-                setCoordinateFunction(coordinates[0], coordinates[1])
-            } else {
-                console.log('bad point - not in the US!')
-                setUSCoordinates(setCoordinateFunction); 
-            }
+                if (data.features.length !== 0) {
+                    console.log(message, ' - good point - in the US!')
+                    setFunction(data.query)
+                } else {
+                    console.log(message, ' - bad point - not in the US!')
+                    setUSCoordinates(message, setFunction); 
+                }
             });
-    }
+    };
 
     return (
         <div>

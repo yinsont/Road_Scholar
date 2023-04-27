@@ -20,7 +20,8 @@ const OVERLAY_STYLES = { //Makes background dark and unclickable
   zIndex: 1000
 }
 
-function TimerModal({  }) {
+function TimerModal({open,  onClose }) {
+    if (!open) return null
   return (
     <div>
       <div style={OVERLAY_STYLES}/> 
@@ -32,4 +33,4 @@ function TimerModal({  }) {
   )
 }
 
-export default AnswerPopUp
+export default TimerModal;
