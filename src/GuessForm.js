@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { MyContext } from "./MyProvider";
 import scoreCalculator from './scoreCalculator';
+import Modal from './AnswerModal';
 
 function GuessForm({ distance, duration }) {
     // reading in distance and duration as miles and hours
@@ -9,6 +9,8 @@ function GuessForm({ distance, duration }) {
     const [name, setName] = useState('');
     const [inputDistance, setInputDistance] = useState('');
     const [inputDuration, setInputDuration] = useState('');
+    const [isOpen, setIsOpen] = useState(false);
+    const [submission, setSubmission] = useState({});
 
     const { onNewAnswer, onStartGame } = useContext(MyContext);
   
@@ -16,6 +18,7 @@ function GuessForm({ distance, duration }) {
         e.preventDefault();
 
         onStartGame(false);
+        setIsOpen(!isOpen);
 
         const today = new Date();
         const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
@@ -28,8 +31,8 @@ function GuessForm({ distance, duration }) {
         let overallScore = 10000-((((distancePercentError+durationPercentError)/2)/100)*10000)
         
         overallScore = (scoreCalculator(overallScore, distance, duration, distancePercentError, durationPercentError))
-        
-        onNewAnswer(
+
+        setSubmission(
             {
                 name: name,
                 timeStamp: dateTime,
@@ -41,13 +44,16 @@ function GuessForm({ distance, duration }) {
                 durationPercentError: durationPercentError,
                 overallScore: overallScore
             }
-        ) 
+        );
+
+        onNewAnswer(submission);
 
     }
 
   return (
     <div id='form'>
         <form onSubmit = {handleSubmitAnswer} >
+        <Modal open={isOpen} onClose={() => setIsOpen(false)} score={submission}></Modal>
             <input
                 type='text'
                 value={name}

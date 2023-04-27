@@ -17,8 +17,8 @@ function MapContainer({ accessToken, originLng, originLat, destinationLng, desti
                 mapStyle="mapbox://styles/mapbox/streets-v12"
                 mapboxAccessToken={accessToken}
                 >
-                    <Marker longitude={originLng} latitude={originLat} anchor="bottom" color='red'/>
-                    <Marker longitude={destinationLng} latitude={destinationLat} anchor="bottom"/>
+                    <Marker longitude={originLng? originLng : null} latitude={originLat? originLat : null} anchor="bottom" color='red'/>
+                    <Marker longitude={destinationLng? destinationLng : null} latitude={destinationLat? destinationLat : null} anchor="bottom"/>
             </Map>
         </div>
     )
