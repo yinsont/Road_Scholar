@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import scoreCalculator from './ScoreCalculator';
 
 function GuessForm({ distance, duration, onNewAnswer, onGameStart }) {
     // reading in distance and duration as miles and hours
@@ -22,7 +23,11 @@ function GuessForm({ distance, duration, onNewAnswer, onGameStart }) {
 
         const distancePercentError = parseFloat((Math.abs(inputDistance-distance)/distance * 100).toFixed(1));
         const durationPercentError = parseFloat((Math.abs(inputDuration-duration)/duration * 100).toFixed(1));
+
+        let overallScore = 10000-((((distancePercentError+durationPercentError)/2)/100)*10000)
         
+        overallScore = (scoreCalculator(overallScore, distance, duration, distancePercentError, durationPercentError))
+        console.log(overallScore)
         const newAnswer = {
             name: name,
             timeStamp: dateTime,
@@ -32,7 +37,7 @@ function GuessForm({ distance, duration, onNewAnswer, onGameStart }) {
             durationGuess: inputDuration,
             distancePercentError: distancePercentError,
             durationPercentError: durationPercentError,
-            overallScore: 10000-((((distancePercentError+durationPercentError)/2)/100)*10000)
+            overallScore: overallScore
         }
 
         

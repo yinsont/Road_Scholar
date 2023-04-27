@@ -4,8 +4,8 @@ function Score({ score }) {
   return (
     <div>
         <li>
-            <p>Name: {score.name}</p>
-            <p>Score: {score.overallScore}% Error</p>
+            <h2>{score.name}</h2>
+            <h5>{score.overallScore}</h5>
         </li>
     </div>
   )

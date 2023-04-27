@@ -85,52 +85,16 @@
       "id": 10
     },
     {
-      "name": "",
-      "timeStamp": "2023-4-26 15:3:28",
-      "distance": 558.09,
-      "duration": 8.605,
-      "distanceGuess": "",
-      "durationGuess": "",
-      "distancePercentError": 100,
-      "durationPercentError": 100,
-      "overallScore": 100,
+      "name": "Rouge AI",
+      "timeStamp": "2023-4-26 19:40:5",
+      "distance": 1172.891,
+      "duration": 18.424,
+      "distanceGuess": 1200,
+      "durationGuess": 18,
+      "distancePercentError": 2.3,
+      "durationPercentError": 2.3,
+      "overallScore": 11398,
       "id": 11
-    },
-    {
-      "name": "Cliff",
-      "timeStamp": "2023-4-26 16:17:53",
-      "distance": 755.008,
-      "duration": 12.03,
-      "distanceGuess": 100,
-      "durationGuess": 10,
-      "distancePercentError": 86.8,
-      "durationPercentError": 16.9,
-      "overallScore": 51.849999999999994,
-      "id": 12
-    },
-    {
-      "name": "Yinson",
-      "timeStamp": "2023-4-26 16:21:48",
-      "distance": 1083.527,
-      "duration": 17.214,
-      "distanceGuess": 2000,
-      "durationGuess": 30,
-      "distancePercentError": 84.6,
-      "durationPercentError": 74.3,
-      "overallScore": 79.44999999999999,
-      "id": 13
-    },
-    {
-      "name": "Yinson",
-      "timeStamp": "2023-4-26 16:22:39",
-      "distance": 461.357,
-      "duration": 10.449,
-      "distanceGuess": 300,
-      "durationGuess": 7,
-      "distancePercentError": 35,
-      "durationPercentError": 33,
-      "overallScore": 6600,
-      "id": 14
     }
   ]
 }
