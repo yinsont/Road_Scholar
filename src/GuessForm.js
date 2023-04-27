@@ -3,14 +3,14 @@ import { useNavigate } from 'react-router-dom'
 import { MyContext } from "./MyProvider";
 import scoreCalculator from './scoreCalculator';
 
-function GuessForm({ distance, duration, onNewAnswer, onGameStart }) {
+function GuessForm({ distance, duration }) {
     // reading in distance and duration as miles and hours
   
     const [name, setName] = useState('');
     const [inputDistance, setInputDistance] = useState('');
     const [inputDuration, setInputDuration] = useState('');
 
-    const { newAnswer, onStartGame } = useContext(MyContext);
+    const { onNewAnswer, onStartGame } = useContext(MyContext);
   
     function handleSubmitAnswer(e) {
         e.preventDefault();
@@ -29,7 +29,7 @@ function GuessForm({ distance, duration, onNewAnswer, onGameStart }) {
         
         overallScore = (scoreCalculator(overallScore, distance, duration, distancePercentError, durationPercentError))
         
-        newAnswer(
+        onNewAnswer(
             {
                 name: name,
                 timeStamp: dateTime,

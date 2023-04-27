@@ -2,7 +2,7 @@ import { useState, useEffect, createContext } from "react";
 
 export const MyContext = createContext({
   scores: [],
-  newAnswer: () => {},
+  onNewAnswer: () => {},
   inGame: '',
   onStartGame: () => {},
 });
@@ -21,7 +21,7 @@ function MyProvider({ children }) {
     });
   }, [])
 
-  const newAnswer = (answer) => {
+  const onNewAnswer = (answer) => {
     fetch("http://localhost:4000/scores", {
       method: "POST",
       headers: {
@@ -43,7 +43,7 @@ function MyProvider({ children }) {
 
   return (
     <MyContext.Provider
-      value={{ scores: scores, newAnswer: newAnswer, inGame: inGame, onStartGame: onStartGame }}
+      value={{ scores: scores, onNewAnswer: onNewAnswer, inGame: inGame, onStartGame: onStartGame }}
     >
       {children}
     </MyContext.Provider>
