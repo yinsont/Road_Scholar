@@ -95,6 +95,30 @@
       "durationPercentError": 2.3,
       "overallScore": 11398,
       "id": 11
+    },
+    {
+      "name": "Peter",
+      "timeStamp": "2023-4-27 9:39:31",
+      "distance": 1577.106,
+      "duration": 24.531,
+      "distanceGuess": 1800,
+      "durationGuess": 22,
+      "distancePercentError": 14.1,
+      "durationPercentError": 10.3,
+      "overallScore": 9878,
+      "id": 12
+    },
+    {
+      "name": "dennis",
+      "timeStamp": "2023-4-27 9:41:33",
+      "distance": 1394.519,
+      "duration": 21.522,
+      "distanceGuess": 700,
+      "durationGuess": 6,
+      "distancePercentError": 49.8,
+      "durationPercentError": 72.1,
+      "overallScore": 4149,
+      "id": 13
     }
   ]
 }

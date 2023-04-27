@@ -24,7 +24,8 @@ function Scoreboard({ distance, duration, inGame, onGameStart }) {
   
   return (
     <div id='scoreboard'>
-        <Timer inGame={inGame} onGameStart={onGameStart}/>
+        <Timer inGame={inGame} onGameStart={onGameStart}/> 
+        {/* Toggle */}
         <GuessForm onNewAnswer={onNewAnswer} distance={distance} duration={duration} onGameStart={onGameStart}/>
         <ScoreboardContainer scores={scores}/>
     </div>

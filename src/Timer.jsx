@@ -22,6 +22,8 @@ function Timer({ inGame, onGameStart }) { //when press start game -> ingame = tr
 
    // clear interval on re-render to avoid memory leaks
    return () => clearInterval(intervalId);
+
+   
    // add timeLeft as a dependency to re-rerun the effect
    // when we update it
  }, [timeLeft]);
