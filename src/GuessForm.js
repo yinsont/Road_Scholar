@@ -2,6 +2,8 @@ import React, { useState, useContext } from 'react'
 import { MyContext } from "./MyProvider";
 import scoreCalculator from './scoreCalculator';
 import Modal from './AnswerModal';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 function GuessForm({ distance, duration }) {
     // reading in distance and duration as miles and hours
@@ -69,14 +71,20 @@ function GuessForm({ distance, duration }) {
     <div id='form'>
         <form onSubmit = {inGame? handleSubmitAnswer : (e) => e.preventDefault()} >
         <Modal open={isOpen} onClose={() => setIsOpen(false)} score={submission}></Modal>
-            <input
+            <TextField
+                style={{margin: '10px'}}
+                id='outlined-basic' 
+                variant='outlined'
                 type='text'
                 value={name}
                 onChange={(e) => {setName(e.target.value)}}
                 placeholder='Name'
             />
             <br></br>
-            <input 
+            <TextField
+                style={{margin: '10px'}}
+                id='outlined-basic' 
+                variant='outlined'
                 type='number'
                 step='100'
                 value={inputDistance}
@@ -84,14 +92,21 @@ function GuessForm({ distance, duration }) {
                 placeholder='Distance (miles)'
             />
             <br></br>
-            <input 
+            <TextField 
+                style={{margin: '10px'}}
+                id='outlined-basic' 
+                variant='outlined'
                 type='number'
                 value={inputDuration}
                 onChange = {(e) => {setInputDuration(parseInt(e.target.value))}} 
-                placeholder='Duration (hours)'
+                placeholder='Driving Time (hours)'
             />
             <br></br>
-            <input type="submit" value="Submit Your Answer" />
+            <input 
+                type='submit' 
+                style={{margin: '10px'}} 
+                value='Submit Answer'
+            ></input> 
         </form>
     </div>
   )

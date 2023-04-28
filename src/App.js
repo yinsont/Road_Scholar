@@ -20,9 +20,7 @@ function App() {
             <Link className='link' to='/scoreboard' > Scoreboard </Link>
           </nav>
         </div>
-        
-
-        <h1>Phase 2 Project</h1>
+      
 
         <Routes>
           <Route path='/' element={<Home />}/>
