@@ -12,13 +12,16 @@ function GuessForm({ distance, duration }) {
     const [isOpen, setIsOpen] = useState(false);
     const [submission, setSubmission] = useState({});
 
-    const { onNewAnswer, onStartGame } = useContext(MyContext);
+    const { onNewAnswer, onStartGame, inGame } = useContext(MyContext);
   
     function handleSubmitAnswer(e) {
         e.preventDefault();
 
         onStartGame(false);
         setIsOpen(!isOpen);
+        setName('');
+        setInputDistance('');
+        setInputDuration('');
 
         const today = new Date();
         const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
@@ -46,25 +49,25 @@ function GuessForm({ distance, duration }) {
             }
         );
 
-        onNewAnswer(
-            {
-                name: name,
-                timeStamp: dateTime,
-                distance: parseFloat(distance.toFixed(3)),
-                duration: parseFloat(duration.toFixed(3)),
-                distanceGuess: inputDistance,
-                durationGuess: inputDuration,
-                distancePercentError: distancePercentError,
-                durationPercentError: durationPercentError,
-                overallScore: overallScore
-            }
-        );
-
+            onNewAnswer(
+                {
+                    name: name,
+                    timeStamp: dateTime,
+                    distance: parseFloat(distance.toFixed(3)),
+                    duration: parseFloat(duration.toFixed(3)),
+                    distanceGuess: inputDistance,
+                    durationGuess: inputDuration,
+                    distancePercentError: distancePercentError,
+                    durationPercentError: durationPercentError,
+                    overallScore: overallScore
+                }
+            );
+            
     }
 
   return (
     <div id='form'>
-        <form onSubmit = {handleSubmitAnswer} >
+        <form onSubmit = {inGame? handleSubmitAnswer : (e) => e.preventDefault()} >
         <Modal open={isOpen} onClose={() => setIsOpen(false)} score={submission}></Modal>
             <input
                 type='text'

@@ -47,7 +47,19 @@ code {
   color: black;
 }
 
+#scoreboard-columns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
 
+.score {
+  margin: 5px;
+  padding: 5px;
+  background-color: #81C2DC;
+  border-radius: 5px;
+
+}
 
 /* .map-container {
   height: 400px;

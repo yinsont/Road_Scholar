@@ -26,7 +26,7 @@ function TimerModal({open,  onClose }) {
     <div>
       <div style={OVERLAY_STYLES}/> 
         <div style = {MODAL_STYLES}>
-          <h1>Hello? You There?</h1>
+          <h1>Times up! Hello? You still there?</h1>
           <button onClick = {onClose}>Close</button>
         </div>
     </div>
