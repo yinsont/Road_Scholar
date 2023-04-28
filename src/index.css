@@ -55,6 +55,18 @@ code {
   justify-content: space-evenly;
 }
 
+.score-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.score-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .score {
   margin: 5px;
   padding: 10px;
@@ -62,6 +74,7 @@ code {
   border-radius: 5px;
   box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.2);
 }
+
 
 .questions-container {
   background-color: #ecefe0;
