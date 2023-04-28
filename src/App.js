@@ -14,6 +14,10 @@ function App() {
       <div className="App">
 
         <div className='navbar'>
+          <img 
+            src='road-scholar-logo.png' 
+            alt='logo picture' 
+          ></img>
           <nav>
             <Link className='link' to='/' > Home </Link>
             <Link className='link' to='/questions' > Questions </Link>

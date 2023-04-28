@@ -59,6 +59,30 @@
       "durationPercentError": 73.4,
       "overallScore": 3806,
       "id": 5
+    },
+    {
+      "name": "Cory",
+      "timeStamp": "2023-4-28 12:54:55",
+      "distance": 520.273,
+      "duration": 8.685,
+      "distanceGuess": 25,
+      "durationGuess": 5,
+      "distancePercentError": 95.2,
+      "durationPercentError": 42.4,
+      "overallScore": 3276,
+      "id": 6
+    },
+    {
+      "name": "Cory",
+      "timeStamp": "2023-4-28 12:55:47",
+      "distance": 583.921,
+      "duration": 9.591,
+      "distanceGuess": 300,
+      "durationGuess": 6,
+      "distancePercentError": 48.6,
+      "durationPercentError": 37.4,
+      "overallScore": 6107,
+      "id": 7
     }
   ]
 }
