@@ -1,13 +1,13 @@
 body {
   margin: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #CCD5AE;
+  background-color: #ecefe0;
 }
 
 code {
@@ -32,15 +32,23 @@ code {
 }
 
 .navbar {
+  position: relative;
   width: 100vw;
   display: flex;
   gap: 1rem;
-  height: 4rem;
+  height: 6rem;
   border-bottom: 1px solid rgb(196, 196, 196);
   box-shadow: 1px 1px 10px rgb(196, 196, 196);
   align-items: center;
   justify-content: center;
   background-color: white;
+  overflow-y: hidden;
+}
+
+.navbar img {
+  position: absolute;
+  left: 10px;
+  height: 120px;
 }
 
 .link {
@@ -54,23 +62,27 @@ code {
   flex-direction: row;
   justify-content: space-evenly;
 }
+
 .score-column {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
 }
+
 .score-list {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
+
 .score {
   margin: 5px;
   padding: 10px;
-  background-color: #81C2DC;
+  background-color: #E0ECEF;
   border-radius: 5px;
   box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.2);
 }
+
 
 .questions-container {
   background-color: #ecefe0;
@@ -90,7 +102,7 @@ code {
   margin: 20px;
   width: 400px;
   border-radius: 15px;
-  background-color: rgb(255, 255, 255);
+  background-color: #EFE3E0;
 }
 
 /* .map-container {
