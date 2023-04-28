@@ -1,13 +1,22 @@
 body {
   margin: 0;
+<<<<<<< HEAD
   width: 100%;
   height: 100%;
+=======
+  width: 100vw;
+  height: 100vh;
+>>>>>>> racquel
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+<<<<<<< HEAD
   background-color: #CCD5AE;
+=======
+  background-color: #ecefe0;
+>>>>>>> racquel
 }
 
 code {
@@ -57,32 +66,32 @@ code {
 
 .score {
   margin: 5px;
-  padding: 5px;
-  background-color: #e3e0ef;
+  padding: 10px;
+  background-color: #81C2DC;
   border-radius: 5px;
-  border: 1px #e0ecef;
+  box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.2);
 }
 
-  .questions-container {
-    background-color: #ecefe0;
-    width: 100v;
-    height: 100%;
-    padding: 50px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    flex-direction: space-evenly;
-  }
+.questions-container {
+  background-color: #ecefe0;
+  width: 100v;
+  height: 100%;
+  padding: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: space-evenly;
+}
 
-  .question{
-    text-align: left;
-    padding: 30px;
-    box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.2);
-    margin: 20px;
-    width: 400px;
-    border-radius: 15px;
-    background-color: rgb(247, 240, 234);
-  }
+.question{
+  text-align: left;
+  padding: 30px;
+  box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.2);
+  margin: 20px;
+  width: 400px;
+  border-radius: 15px;
+  background-color: rgb(247, 240, 234);
+}
 
 /* .map-container {
   height: 400px;
@@ -99,4 +108,8 @@ code {
   left: 0;
   margin: 12px;
   border-radius: 4px;
+<<<<<<< HEAD
 } */
+=======
+} */
+>>>>>>> racquel

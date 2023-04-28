@@ -13,7 +13,7 @@ function MapContainer({ accessToken, originLng, originLat, destinationLng, desti
                     latitude: 40,
                     zoom: 3
                 }}
-                style={{width: '80vw', height: '100vh'}}
+                style={{width: '80vw', height: '80vh'}}
                 mapStyle="mapbox://styles/mapbox/streets-v12"
                 mapboxAccessToken={accessToken}
                 >
