@@ -48,7 +48,13 @@ code {
 }
 
 
-
+.question-box {
+  background-color: lightgrey;
+  width: px;
+  border: 3vh solid green;
+  padding: 50vh;
+  margin: 20
+}
 /* .map-container {
   height: 400px;
 }

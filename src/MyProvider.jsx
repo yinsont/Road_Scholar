@@ -49,18 +49,20 @@ function MyProvider({ children }) {
   }
 
   return (
-    <MyContext.Provider
-      value={{ 
-        scores: scores, 
-        onNewAnswer: onNewAnswer, 
-        inGame: inGame, 
-        onStartGame: onStartGame, 
-        timeRemaining: timeRemaining, 
-        onResetTime: onResetTime 
-      }}
-    >
-      {children}
-    </MyContext.Provider>
+    <div>
+      <MyContext.Provider
+        value={{ 
+          scores: scores, 
+          onNewAnswer: onNewAnswer, 
+          inGame: inGame, 
+          onStartGame: onStartGame, 
+          timeRemaining: timeRemaining, 
+          onResetTime: onResetTime 
+        }}
+      >
+        {children}
+      </MyContext.Provider>
+    </div>
   );
 }
 

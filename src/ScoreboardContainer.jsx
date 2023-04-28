@@ -18,6 +18,7 @@ function ScoreboardContainer() {
       <ol>
         {scoresList}
       </ol>
+      <h1>hi</h1>
     </div>
   )
 }
