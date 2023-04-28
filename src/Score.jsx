@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Score({ score }) {
+function Score({ name, score, text }) {
   return (
-    <div>
+    <div className='score'>
         <li>
-            <h3>{score.name}</h3>
-            <span>{score.overallScore}</span>
+            <h3>{name}</h3>
+            <span>{score}{text}</span>
         </li>
     </div>
   )

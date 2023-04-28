@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { MyContext } from "./MyProvider";
+import Button from '@mui/material/Button';
 
 function StartButton({ onSetOrigin, onSetDestination, accessToken }) {
 
@@ -78,7 +79,7 @@ function StartButton({ onSetOrigin, onSetDestination, accessToken }) {
 
     return (
         <div>
-            <button onClick={handleStart} >Start game!</button>
+            <Button variant='contained' onClick={handleStart} style={{margin: '30px'}}>Start game!</Button>
         </div>
     )
 }

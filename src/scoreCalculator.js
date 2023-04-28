@@ -669,5 +669,3 @@ function scoreCalculator (overallScore, distance, duration, distancePercentError
     }
     return Math.round(overallScore)
 }
-
-export default scoreCalculator

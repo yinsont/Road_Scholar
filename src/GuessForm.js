@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react'
 import { MyContext } from "./MyProvider";
 import scoreCalculator from './scoreCalculator';
 import Modal from './AnswerModal';
+import TextField from '@mui/material/TextField';
 
 function GuessForm({ distance, duration }) {
     // reading in distance and duration as miles and hours
@@ -12,13 +13,16 @@ function GuessForm({ distance, duration }) {
     const [isOpen, setIsOpen] = useState(false);
     const [submission, setSubmission] = useState({});
 
-    const { onNewAnswer, onStartGame } = useContext(MyContext);
+    const { onNewAnswer, onStartGame, inGame } = useContext(MyContext);
   
     function handleSubmitAnswer(e) {
         e.preventDefault();
 
         onStartGame(false);
         setIsOpen(!isOpen);
+        setName('');
+        setInputDistance('');
+        setInputDuration('');
 
         const today = new Date();
         const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
@@ -46,34 +50,40 @@ function GuessForm({ distance, duration }) {
             }
         );
 
-        onNewAnswer(
-            {
-                name: name,
-                timeStamp: dateTime,
-                distance: parseFloat(distance.toFixed(3)),
-                duration: parseFloat(duration.toFixed(3)),
-                distanceGuess: inputDistance,
-                durationGuess: inputDuration,
-                distancePercentError: distancePercentError,
-                durationPercentError: durationPercentError,
-                overallScore: overallScore
-            }
-        );
-
+            onNewAnswer(
+                {
+                    name: name,
+                    timeStamp: dateTime,
+                    distance: parseFloat(distance.toFixed(3)),
+                    duration: parseFloat(duration.toFixed(3)),
+                    distanceGuess: inputDistance,
+                    durationGuess: inputDuration,
+                    distancePercentError: distancePercentError,
+                    durationPercentError: durationPercentError,
+                    overallScore: overallScore
+                }
+            );
+            
     }
 
   return (
     <div id='form'>
-        <form onSubmit = {handleSubmitAnswer} >
+        <form onSubmit = {inGame? handleSubmitAnswer : (e) => e.preventDefault()} >
         <Modal open={isOpen} onClose={() => setIsOpen(false)} score={submission}></Modal>
-            <input
+            <TextField
+                style={{margin: '10px'}}
+                id='outlined-basic' 
+                variant='outlined'
                 type='text'
                 value={name}
                 onChange={(e) => {setName(e.target.value)}}
                 placeholder='Name'
             />
             <br></br>
-            <input 
+            <TextField
+                style={{margin: '10px'}}
+                id='outlined-basic' 
+                variant='outlined'
                 type='number'
                 step='100'
                 value={inputDistance}
@@ -81,14 +91,21 @@ function GuessForm({ distance, duration }) {
                 placeholder='Distance (miles)'
             />
             <br></br>
-            <input 
+            <TextField 
+                style={{margin: '10px'}}
+                id='outlined-basic' 
+                variant='outlined'
                 type='number'
                 value={inputDuration}
                 onChange = {(e) => {setInputDuration(parseInt(e.target.value))}} 
-                placeholder='Duration (hours)'
+                placeholder='Driving Time (hours)'
             />
             <br></br>
-            <input type="submit" value="Submit Your Answer" />
+            <input 
+                type='submit' 
+                style={{margin: '10px'}} 
+                value='Submit Answer'
+            ></input> 
         </form>
     </div>
   )
