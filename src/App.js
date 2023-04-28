@@ -1,28 +1,40 @@
 import './App.css';
 import React, { useState } from 'react'
-import MapContainer from './MapContainer';
-import Scoreboard from './Scoreboard';
+import { Link, Route, Routes } from 'react-router-dom';
+import Home from './Home';
+import ScoreboardContainer from './ScoreboardContainer';
+import Questions from './Questions';
+import MyProvider from './MyProvider';
+import Error from './Error';
 
 function App() {
 
-  const [distance, setDistance] = useState(0); // in meters
-  const [duration, setDuration] = useState(0); // in seconds
-
-  function onDataFetch(distance, duration) {
-    // reading distance in meters --> convert to miles
-    setDistance(distance/1609.344);
-    // reading duration in seconds --> convert to hours
-    setDuration(duration/60/60);
-  }
-  
   return (
-    <div className="App">
-      <h1>Phase 2 Project</h1>
-      <div id='main-container'>
-        <MapContainer onDataFetch={onDataFetch}/>
-        <Scoreboard distance={distance} duration={duration}/>
+    <MyProvider>
+      <div className="App">
+
+        <div className='navbar'>
+          <img 
+            src='road-scholar-logo.png' 
+            alt='logo picture' 
+          ></img>
+          <nav>
+            <Link className='link' to='/' > Home </Link>
+            <Link className='link' to='/questions' > Questions </Link>
+            <Link className='link' to='/scoreboard' > Scoreboard </Link>
+          </nav>
+        </div>
+      
+
+        <Routes>
+          <Route path='/' element={<Home />}/>
+          <Route path='/questions' element={<Questions />}/>
+          <Route path='/scoreboard' element={<ScoreboardContainer />}/>
+          <Route path='*' element={<Error />}/>
+        </Routes> 
       </div>
-    </div>
+    </MyProvider>
+    
   );
 };
 

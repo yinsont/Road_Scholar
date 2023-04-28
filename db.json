@@ -1,16 +1,15 @@
 {
   "scores": [
     {
-      "name": "Yinson",
-      "score": {
-        "distance": 3017.524,
-        "duration": 46.796,
-        "distanceGuess": 1000,
-        "durationGuess": 18,
-        "distancePercentError": 66.9,
-        "durationPercentError": 61.5,
-        "overallScore": 64.2
-      },
+      "name": "Patrick",
+      "timeStamp": "2023-4-27 15:38:3",
+      "distance": 1937.258,
+      "duration": 29.802,
+      "distanceGuess": 1850,
+      "durationGuess": 30,
+      "distancePercentError": 4.5,
+      "durationPercentError": 0.7,
+      "overallScore": 11363,
       "id": 1
     }
   ]
