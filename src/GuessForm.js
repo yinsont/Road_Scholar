@@ -3,7 +3,6 @@ import { MyContext } from "./MyProvider";
 import scoreCalculator from './scoreCalculator';
 import Modal from './AnswerModal';
 import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
 
 function GuessForm({ distance, duration }) {
     // reading in distance and duration as miles and hours

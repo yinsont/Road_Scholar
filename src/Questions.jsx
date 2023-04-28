@@ -9,7 +9,7 @@ function Questions() {
         </div>
         <div className='question'>
           <h2>How did we decide this?</h2>
-          <p>Took us a good amount of time to figure out what we can do with our current skils and knowledge. We also took into consideration what we wanted to do with our capstone projects and wished to incorporate some of the knowledge we gain from doing this project into it. We also wanted something interactive and thus, we decided to do a map game, inspired by Patrick's and Josh F.'s knowledge of geography.</p>
+          <p>Took us a good amount of time to figure out what we can do with our current skils and knowledge. We also took into consideration what we wanted to do with our capstone projects and wished to incorporate some of the knowledge we gain from doing this project into it. We also wanted something interactive and thus, we decided to do a map game, inspired by Patrick's and Josh F.'s enthusiasm for geography.</p>
         </div>
         <div className='question'>
           <h2>How'd we make it?</h2>

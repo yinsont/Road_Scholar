@@ -79,7 +79,7 @@ function StartButton({ onSetOrigin, onSetDestination, accessToken }) {
 
     return (
         <div>
-            <Button variant='contained' onClick={handleStart} style={{margin: '30px'}}>Start game!</Button>
+            <Button variant='contained' onClick={handleStart} style={{margin: '20px'}}>Start game!</Button>
         </div>
     )
 }
