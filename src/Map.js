@@ -28,7 +28,6 @@ function Map({ point1, point2 }) {
                 .addTo(map.current);
         });
     
- 
     useEffect(() => {
         if (!map.current) return; // wait for map to initialize
             map.current.on('move', () => {
