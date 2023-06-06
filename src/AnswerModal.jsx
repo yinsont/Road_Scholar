@@ -27,7 +27,7 @@ function Modal({open, onClose, score}) {
     <>
         <div style={OVERLAY_STYLES}/> 
         <div style = {MODAL_STYLES}>
-        {((score.distancePercentError+score.durationPercentError)/2) < 65 ? <><h2>Good Job</h2><p>(☞ﾟヮﾟ)☞             ☜(ﾟヮﾟ☜)</p></> : <h2>Do better{<p>(╯°□°）╯︵ ┻━┻</p>}</h2>}
+        {((score.distancePercentError+score.durationPercentError)/2) < 65 ? <><h2>Good Job</h2><p>(☞ﾟヮﾟ)☞ ☜(ﾟヮﾟ☜)</p></> : <h2>Do better{<p>(╯°□°）╯︵ ┻━┻</p>}</h2>}
         <p>Score:</p>
         <h2>{score.overallScore}</h2>
         <h5>Distance: {score.distance} Miles</h5>

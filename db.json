@@ -11,6 +11,54 @@
       "durationPercentError": 0.7,
       "overallScore": 11363,
       "id": 1
+    },
+    {
+      "name": "Kazi",
+      "timeStamp": "2023-4-28 19:44:29",
+      "distance": 826.606,
+      "duration": 13.234,
+      "distanceGuess": 450,
+      "durationGuess": 2,
+      "distancePercentError": 45.6,
+      "durationPercentError": 84.9,
+      "overallScore": 3658,
+      "id": 2
+    },
+    {
+      "name": "kazi",
+      "timeStamp": "2023-4-28 19:45:12",
+      "distance": 289.789,
+      "duration": 4.608,
+      "distanceGuess": 200,
+      "durationGuess": 2,
+      "distancePercentError": 31,
+      "durationPercentError": 56.6,
+      "overallScore": 5995,
+      "id": 3
+    },
+    {
+      "name": "dennis",
+      "timeStamp": "2023-6-5 17:0:23",
+      "distance": 1750.256,
+      "duration": 29.219,
+      "distanceGuess": 1500,
+      "durationGuess": 80,
+      "distancePercentError": 14.3,
+      "durationPercentError": 173.8,
+      "overallScore": 595,
+      "id": 4
+    },
+    {
+      "name": "yinson",
+      "timeStamp": "2023-6-5 17:0:57",
+      "distance": 1011.335,
+      "duration": 18.488,
+      "distanceGuess": 800,
+      "durationGuess": 12,
+      "distancePercentError": 20.9,
+      "durationPercentError": 35.1,
+      "overallScore": 7855,
+      "id": 5
     }
   ]
 }
